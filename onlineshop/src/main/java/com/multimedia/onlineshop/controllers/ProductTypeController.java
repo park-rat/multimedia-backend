@@ -1,0 +1,24 @@
+package com.multimedia.onlineshop.controllers;
+
+import com.multimedia.onlineshop.models.ProductType;
+import com.multimedia.onlineshop.repositories.ProductTypeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+public class ProductTypeController {
+
+    @Autowired
+    private ProductTypeRepository productTypeRepository;
+
+    @CrossOrigin
+    @GetMapping("/prodtypes")
+    public ResponseEntity<List<ProductType>> getAllProductTypes() {
+        return ResponseEntity.ok(productTypeRepository.getAllProductTypes());
+    }
+}
